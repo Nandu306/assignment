@@ -44,11 +44,11 @@ def count_words(urls)
 
 
   urls.each do |url|
-    threads << Thread.new{
+    threads << Thread.new do
       sorted = count(extract([], url))
-      puts "Done one, processing the next"
+      puts "Finished with one, processing the next"
       sleep(10)
-    }
+    end
   end
 
 
@@ -58,11 +58,8 @@ def count_words(urls)
 end
 
 
-continue = "yes"
-
 urls = []
 
-while continue == "yes"
 
   puts "What's the first url that you want to process?"
   url_1 = gets.chomp
@@ -72,16 +69,10 @@ while continue == "yes"
   url_2 = gets.chomp
 
 
-
   puts "What's the third url that you want to process?"
   url_3 = gets.chomp
 
   urls << url_1 << url_2 << url_3
 
 
-  puts "Any others? (yes/no)"
-  continue = gets.chomp
-
-  count_words(urls) if continue == 'no'
-
-end
+  count_words(urls)
