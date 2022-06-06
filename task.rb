@@ -1,7 +1,6 @@
 def spin_words(sentence)
  clean_sentence = sentence.gsub(/[^a-z0-9\s]/i, '')
  words = clean_sentence.split(' ')
- p words
  reversed_sentence = []
 
  words.each do |word|
